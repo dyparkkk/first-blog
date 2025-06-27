@@ -1,36 +1,40 @@
 import * as styles from './Header.css';
-import DyLogo from '@/public/logo.svg';
-import MenuIcon from '@/public/menu.svg';
-import Message from '@/public/message.svg';
-import * as motion from 'motion/react-client';
+import { HeaderIcon } from '@/components/headerIcon/HeaderIcon';
+import { Logo } from '@/components/logo/Logo';
+import { Search } from '@/components/search/Search';
+import { Category } from '@/features/home/category/Category';
+import { useEffect, useRef, useState } from 'react';
 
 const Header = () => {
+  const [onMenu, setOnMenu] = useState(false);
+
+  const handleMenuClick = () => {
+    setOnMenu(!onMenu);
+  };
+
+  const handleMailClick = () => {
+    alert('no implement');
+  };
+
+  const handleToggle = (toggle: boolean) => {
+    console.log('handleToggle', toggle);
+    if (toggle) setOnMenu(true);
+    else setOnMenu(false);
+  };
+
   return (
     <header className={styles.container}>
-      <motion.div
-        className={styles.logo}
-        whileHover={{ scale: 1.4 }}
-        whileTap={{ scale: 0.7 }}
-      >
-        <DyLogo width={50} height={50} />
-      </motion.div>
-
+      <Logo />
       <div className={styles.menuContainer}>
-        <motion.div
-          className={styles.menuBox}
-          whileHover={{ scale: 1.4 }}
-          whileTap={{ scale: 0.7 }}
-        >
-          <Message width={24} height={24} />
-        </motion.div>
-        <motion.div
-          className={styles.menuBox}
-          whileHover={{ scale: 1.4 }}
-          whileTap={{ scale: 0.7 }}
-        >
-          <MenuIcon width={24} height={24} />
-        </motion.div>
+        {onMenu ? null : (
+          <>
+            <Search />
+            <HeaderIcon icon={'mail'} callback={handleMailClick} />
+          </>
+        )}
+        <HeaderIcon icon={onMenu ? 'x' : 'menu'} callback={handleMenuClick} />
       </div>
+      <Category onToggle={handleToggle} />
     </header>
   );
 };

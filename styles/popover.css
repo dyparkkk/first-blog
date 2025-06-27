@@ -1,0 +1,16 @@
+#category[popover] {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+#category[popover]:popover-open {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+@starting-style {
+  #category[popover]:popover-open {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}

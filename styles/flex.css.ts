@@ -36,10 +36,19 @@ export const flex = recipe({
       spaceBetween: {
         justifyContent: 'space-between',
       },
+      start: {
+        justifyContent: 'start',
+      },
     },
     align: {
       center: {
         alignItems: 'center',
+      },
+      start: {
+        alignItems: 'start',
+      },
+      end: {
+        alignItems: 'end',
       },
     },
   },

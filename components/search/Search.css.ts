@@ -1,16 +1,29 @@
 import { style } from '@vanilla-extract/css';
 import { flex } from '@/styles/flex.css';
+import { theme, gradients } from '@/styles/theme.css';
+
+export const container = style([
+  flex({ direction: 'row', justify: 'start', align: 'center' }),
+  {
+    // position: 'relative',
+
+    '@media': {
+      'screen and (max-width: 840px)': {
+        display: 'none',
+      },
+    },
+  },
+]);
 
 export const form = style([
   flex({ direction: 'row', align: 'center', justify: 'center' }),
   {
-    border: '1px solid #11111114',
+    border: `1px solid ${theme.colors.boarder[4]}`,
     borderRadius: 30,
     width: 'auto',
     maxWidth: '100%',
     height: '52px',
-    background:
-      'linear-gradient(rgba(17, 17, 17, 0.04) 0%, rgba(17, 17, 17, 0) 100%)',
+    background: gradients.background.light(),
   },
 ]);
 
@@ -19,15 +32,15 @@ export const input = style({
   border: 'none',
   outline: 'none',
   fontSize: '1rem',
-  background: 'rgba(0,0,0,0.0)',
+  background: 'transparent',
   padding: '10px 16px 10px 60px',
-  color: '#111111ff',
+  color: theme.colors.text[100],
 });
 
 export const button = style([
   flex({ direction: 'row', justify: 'center', align: 'center' }),
   {
-    border: '1px solid #11111115',
+    border: `1px solid ${theme.colors.boarder[8]}`,
     borderRadius: 50,
     boxShadow: 'none',
     lineHeight: 1.4,
@@ -37,22 +50,33 @@ export const button = style([
     justifyContent: 'center',
     margin: '0px 4px 0px 0px',
     zIndex: 2,
-    background:
-      'linear-gradient(0deg, rgba(17, 17, 17, 0.043) 0%, rgba(17, 17, 17, 0) 100%)',
+    background: gradients.background.vertical(),
+    cursor: 'pointer',
+    transition: 'background 0.4s ease',
+
+    ':hover': {
+      background: gradients.background.vertical(0.08),
+    },
   },
 ]);
 
-export const arrowIcon = style({
-  width: 20,
+export const arrow = style({
+  width: 22,
   height: 'auto',
+  transform: 'rotate(180deg)',
 });
 
 export const iconBox = style([
   flex({ align: 'center', justify: 'end' }),
   {
     position: 'absolute',
-    width: 48,
+    width: 44,
     height: 'auto',
     margin: 0,
   },
 ]);
+
+export const searchIcon = style({
+  width: 15,
+  height: 15,
+});

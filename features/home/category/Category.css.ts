@@ -1,5 +1,5 @@
 import { flex } from '@/styles/flex.css';
-import { theme } from '@/styles/theme.css';
+import { theme, gradients } from '@/styles/theme.css';
 import { globalStyle, style } from '@vanilla-extract/css';
 
 export const category = style([
@@ -11,8 +11,7 @@ export const category = style([
     width: 420,
     height: 'auto',
     gap: 12,
-    background:
-      'linear-gradient(0deg, rgb(17, 17, 17) 0%, rgb(51, 51, 51) 100%)',
+    background: gradients.background.dark,
     marginTop: 30,
 
     transformOrigin: 'top center',

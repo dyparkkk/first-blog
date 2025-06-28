@@ -17,6 +17,9 @@ export const flex = recipe({
         left: 0,
         right: 0,
       },
+      absolute: {
+        position: 'absolute',
+      },
     },
     direction: {
       row: {

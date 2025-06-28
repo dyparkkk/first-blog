@@ -1,11 +1,11 @@
 import Form from 'next/form';
 import * as styles from './Search.css';
-import Right from '@/public/icon/right_angle.svg';
-import { BiSearch, BiChevronRight } from 'react-icons/bi';
+import Arrow from '@/public/icon/angle_left.svg';
+import SearchIcon from '@/public/icon/search.svg';
 
 export const Search = () => {
   return (
-    <>
+    <div className={styles.container}>
       <Form action="/search" className={styles.form}>
         <input
           type="text"
@@ -14,12 +14,12 @@ export const Search = () => {
           className={styles.input}
         />
         <button className={styles.button}>
-          <BiChevronRight className={styles.arrowIcon} />
+          <Arrow className={styles.arrow} />
         </button>
       </Form>
       <div className={styles.iconBox}>
-        <BiSearch />
+        <SearchIcon className={styles.searchIcon} />
       </div>
-    </>
+    </div>
   );
 };

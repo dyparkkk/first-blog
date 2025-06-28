@@ -1,5 +1,15 @@
 import { flex } from '@/styles/flex.css';
-import { style } from '@vanilla-extract/css';
+import { theme } from '@/styles/theme.css';
+import { style, keyframes, globalStyle } from '@vanilla-extract/css';
+
+export const growProgress = keyframes({
+  '0%': {
+    transform: 'scaleX(0)',
+  },
+  '100%': {
+    transform: 'scaleX(1)',
+  },
+});
 
 export const container = style([
   flex({
@@ -12,8 +22,35 @@ export const container = style([
     padding: '0 60px', // media 필요
     width: '100%',
     height: '90px',
+    zIndex: 4,
+    backgroundColor: theme.colors.background,
+
+    '@media': {
+      'screen and (max-width: 1140px)': {
+        padding: '0 40px',
+      },
+      'screen and (max-width: 840px)': {
+        height: '80px',
+        padding: '0 30px',
+      },
+      'screen and (max-width: 540px)': {
+        padding: '0 20px',
+      },
+    },
   },
 ]);
+
+export const progress = style({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '4px',
+  background: theme.colors.primary,
+  transformOrigin: '0% 50%',
+  animation: `${growProgress} auto linear`,
+  animationTimeline: '--page-scroll',
+});
 
 export const logo = style([flex({ direction: 'row', align: 'center' })]);
 

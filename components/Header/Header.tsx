@@ -24,6 +24,7 @@ const Header = () => {
 
   return (
     <header className={styles.container}>
+      <div className={styles.progress}></div>
       <Logo />
       <div className={styles.menuContainer}>
         {onMenu ? null : (

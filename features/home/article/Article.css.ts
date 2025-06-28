@@ -2,10 +2,12 @@ import { style } from '@vanilla-extract/css';
 import { flex } from '@/styles/flex.css';
 import { lineClamp } from '@/styles/text.css';
 import { theme } from '@/styles/theme.css';
+import { animations } from '@/styles/animations.css';
 
 export const articleContainer = style([
   flex({ direction: 'column', justify: 'center', align: 'start' }),
   {
+    width: '100%',
     gap: 32,
     margin: 0,
     padding: '0px 100px',
@@ -55,21 +57,10 @@ export const body = style({
   lineHeight: 1.9,
 });
 
-export const more = style({});
-
-export const moreAnimation = style({
-  width: '100%',
-  height: '2px',
-  transform: 'scaleX(0)',
-  transformOrigin: 'center left',
-  transition: 'transform 0.4s cubic-bezier(0.4, 0.4, 0, 1)',
-  background: theme.colors.text[100],
-  selectors: {
-    [`${more}:hover + &`]: {
-      transform: 'scaleX(1)',
-    },
-    [`${more}:not(:hover) + &`]: {
-      transform: 'scaleX(0)',
-    },
-  },
+export const more = style({
+  lineHeight: 1.4,
 });
+
+export const moreAnimation = style([
+  animations.scaleX(theme.colors.text[100], more),
+]);
